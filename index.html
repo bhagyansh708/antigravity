@@ -155,25 +155,50 @@
             transform: scale(1.2);
         }
 
-        /* Dropdown Styling */
+        /* Dropdown Styling - ENHANCED VISIBILITY */
         select {
-            background-color: var(--deep-space);
+            background-color: rgba(26, 31, 58, 0.95);
             color: var(--neon-cyan);
-            border: 1px solid var(--neon-cyan);
-            padding: 10px 15px;
-            border-radius: 6px;
+            border: 2px solid var(--neon-cyan);
+            padding: 12px 15px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+            min-height: 44px;
         }
 
         select:hover {
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6), inset 0 0 10px rgba(0, 229, 255, 0.1);
+            border-color: var(--neon-cyan-light);
         }
 
         select:focus {
             outline: none;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.8), inset 0 0 15px rgba(0, 229, 255, 0.15);
+            border-color: var(--neon-cyan-light);
+        }
+
+        select option {
+            background-color: var(--deep-space);
+            color: var(--neon-cyan);
+            padding: 12px;
+            margin: 5px 0;
+            border: none;
+            font-size: 15px;
+        }
+
+        select option:hover {
+            background-color: rgba(0, 229, 255, 0.2);
+            color: var(--neon-cyan-light);
+        }
+
+        select option:checked {
+            background: linear-gradient(#0096ff, #0096ff);
+            background-color: var(--cool-blue) !important;
+            color: white;
         }
 
         /* Thermal Heatmap Gradient */
@@ -353,6 +378,81 @@
         .loading-spin {
             animation: loading-spin 2s linear infinite;
         }
+
+        /* Enhanced Preset Button Styling */
+        .preset-btn {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 44px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .preset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .preset-btn-cool {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        .preset-btn-cool:hover {
+            background: rgba(0, 229, 255, 0.15);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+        }
+
+        .preset-btn-heat {
+            border-color: var(--solar-orange);
+            color: var(--solar-orange);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .preset-btn-heat:hover {
+            background: rgba(255, 107, 53, 0.15);
+            box-shadow: 0 0 25px rgba(255, 107, 53, 0.6);
+        }
+
+        .preset-btn-balanced {
+            border-color: #00ff88;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .preset-btn-balanced:hover {
+            background: rgba(0, 255, 136, 0.15);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
+        }
+
+        /* Label Enhancement */
+        .control-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .control-label-icon {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body class="grid-bg">
@@ -412,21 +512,21 @@
 
                     <!-- City Selector -->
                     <div class="mb-8">
-                        <label class="block text-sm font-semibold text-gray-300 mb-3">
-                            🏙️ Target Microclimate
+                        <label class="control-label">
+                            <span class="control-label-icon">🏙️</span> Target Microclimate
                         </label>
                         <select id="citySelector" class="w-full smooth-transition">
-                            <option value="delhi">New Delhi Microclimate</option>
-                            <option value="mumbai">Mumbai Coastal Grid</option>
-                            <option value="bangalore">Bengaluru Urban Center</option>
+                            <option value="delhi">🇮🇳 New Delhi Microclimate</option>
+                            <option value="mumbai">🌊 Mumbai Coastal Grid</option>
+                            <option value="bangalore">🏛️ Bengaluru Urban Center</option>
                         </select>
                     </div>
 
                     <!-- Vegetation Cover Slider -->
                     <div class="mb-8">
                         <div class="flex items-center justify-between mb-3">
-                            <label class="text-sm font-semibold text-gray-300">
-                                🌿 Vegetation Cover / Canopy Density
+                            <label class="control-label mb-0">
+                                <span class="control-label-icon">🌿</span> Vegetation / Canopy Density
                             </label>
                             <span class="text-lg font-bold glow-text" id="vegValue">0%</span>
                         </div>
@@ -437,8 +537,8 @@
                     <!-- Albedo Factor Slider -->
                     <div class="mb-8">
                         <div class="flex items-center justify-between mb-3">
-                            <label class="text-sm font-semibold text-gray-300">
-                                ✨ Albedo Factor / Cool Roof Coverage
+                            <label class="control-label mb-0">
+                                <span class="control-label-icon">✨</span> Albedo / Cool Roofs
                             </label>
                             <span class="text-lg font-bold glow-text" id="albedoValue">0%</span>
                         </div>
@@ -449,8 +549,8 @@
                     <!-- Urban Built-up Density Slider -->
                     <div class="mb-8">
                         <div class="flex items-center justify-between mb-3">
-                            <label class="text-sm font-semibold text-gray-300">
-                                🏢 Urban Built-up Density
+                            <label class="control-label mb-0">
+                                <span class="control-label-icon">🏢</span> Built-up Density
                             </label>
                             <span class="text-lg font-bold number-display-orange" id="builtupValue">0%</span>
                         </div>
@@ -460,18 +560,15 @@
 
                     <!-- Quick Actions -->
                     <div class="mt-8 pt-6 border-t border-gray-700">
-                        <p class="text-xs font-semibold text-gray-400 mb-4">Quick Presets</p>
-                        <button class="w-full mb-2 py-2 px-3 rounded-lg border border-neon-cyan text-neon-cyan hover-glow smooth-transition text-sm font-semibold hover:bg-opacity-20 hover:bg-cyan-500"
-                            onclick="setPreset('cool')">
-                            🧊 Cool City Scenario
+                        <p class="control-label text-xs">Quick Presets</p>
+                        <button class="preset-btn preset-btn-cool" onclick="setPreset('cool')">
+                            <span>🧊</span> Cool City
                         </button>
-                        <button class="w-full mb-2 py-2 px-3 rounded-lg border border-solar-orange text-solar-orange hover-glow-orange smooth-transition text-sm font-semibold hover:bg-opacity-20 hover:bg-orange-500"
-                            onclick="setPreset('heat')">
-                            🔥 Heat Island Scenario
+                        <button class="preset-btn preset-btn-heat" onclick="setPreset('heat')">
+                            <span>🔥</span> Heat Island
                         </button>
-                        <button class="w-full py-2 px-3 rounded-lg border border-green-500 text-green-400 hover-glow smooth-transition text-sm font-semibold hover:bg-opacity-20 hover:bg-green-500"
-                            onclick="setPreset('balanced')">
-                            ⚖️ Balanced Scenario
+                        <button class="preset-btn preset-btn-balanced" onclick="setPreset('balanced')">
+                            <span>⚖️</span> Balanced
                         </button>
                     </div>
                 </div>
