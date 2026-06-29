@@ -30,7 +30,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--space-black) 0%, var(--deep-space) 100%);
+            background: linear-gradient(135deg, #000000 0%, #0a0e27 50%, #001a33 100%);
             color: var(--text-primary);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
@@ -49,8 +49,8 @@
         /* Grid Background */
         .grid-bg {
             background-image:
-                linear-gradient(0deg, transparent 24%, rgba(42, 63, 95, 0.1) 25%, rgba(42, 63, 95, 0.1) 26%, transparent 27%, transparent 74%, rgba(42, 63, 95, 0.1) 75%, rgba(42, 63, 95, 0.1) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(42, 63, 95, 0.1) 25%, rgba(42, 63, 95, 0.1) 26%, transparent 27%, transparent 74%, rgba(42, 63, 95, 0.1) 75%, rgba(42, 63, 95, 0.1) 76%, transparent 77%, transparent);
+                linear-gradient(0deg, transparent 24%, rgba(0, 229, 255, 0.08) 25%, rgba(0, 229, 255, 0.08) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.08) 75%, rgba(0, 229, 255, 0.08) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 229, 255, 0.08) 25%, rgba(0, 229, 255, 0.08) 26%, transparent 27%, transparent 74%, rgba(0, 229, 255, 0.08) 75%, rgba(0, 229, 255, 0.08) 76%, transparent 77%, transparent);
             background-size: 50px 50px;
             animation: grid-scroll 20s linear infinite;
         }
@@ -66,13 +66,13 @@
 
         /* Neon Border */
         .neon-border {
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), inset 0 0 20px rgba(0, 229, 255, 0.05);
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.1);
         }
 
         .neon-border-orange {
-            border: 1px solid var(--solar-orange);
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3), inset 0 0 20px rgba(255, 107, 53, 0.05);
+            border: 2px solid var(--solar-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5), inset 0 0 20px rgba(255, 107, 53, 0.1);
         }
 
         /* Smooth Transitions */
@@ -113,92 +113,99 @@
         /* Slider Styling */
         input[type="range"] {
             width: 100%;
-            height: 6px;
+            height: 8px;
             background: linear-gradient(90deg, var(--cool-blue) 0%, var(--neon-cyan) 50%, var(--solar-orange) 100%);
-            border-radius: 3px;
+            border-radius: 5px;
             outline: none;
             -webkit-appearance: none;
             cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: var(--neon-cyan);
-            border: 2px solid var(--text-primary);
+            border: 2px solid white;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 1);
             transition: all 0.3s ease;
         }
 
         input[type="range"]::-webkit-slider-thumb:hover {
-            box-shadow: 0 0 25px rgba(0, 229, 255, 1), 0 0 40px rgba(0, 229, 255, 0.5);
-            transform: scale(1.2);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 1), 0 0 50px rgba(0, 229, 255, 0.5);
+            transform: scale(1.3);
         }
 
         input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: var(--neon-cyan);
-            border: 2px solid var(--text-primary);
+            border: 2px solid white;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 1);
             transition: all 0.3s ease;
         }
 
         input[type="range"]::-moz-range-thumb:hover {
-            box-shadow: 0 0 25px rgba(0, 229, 255, 1), 0 0 40px rgba(0, 229, 255, 0.5);
-            transform: scale(1.2);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 1), 0 0 50px rgba(0, 229, 255, 0.5);
+            transform: scale(1.3);
         }
 
-        /* Dropdown Styling - ENHANCED VISIBILITY */
+        /* Dropdown Styling - BRAND NEW VISIBILITY */
         select {
-            background-color: rgba(26, 31, 58, 0.95);
-            color: var(--neon-cyan);
-            border: 2px solid var(--neon-cyan);
-            padding: 12px 15px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(0, 40, 60, 0.95), rgba(10, 30, 50, 0.95));
+            color: #00e5ff;
+            border: 3px solid #00e5ff;
+            padding: 14px 16px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 15px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 700;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
-            min-height: 44px;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.7), inset 0 0 15px rgba(0, 229, 255, 0.15);
+            min-height: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
         }
 
         select:hover {
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6), inset 0 0 10px rgba(0, 229, 255, 0.1);
-            border-color: var(--neon-cyan-light);
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.9), inset 0 0 20px rgba(0, 229, 255, 0.25);
+            border-color: #4df9ff;
+            background: linear-gradient(135deg, rgba(0, 50, 80, 1), rgba(15, 40, 70, 1));
         }
 
         select:focus {
             outline: none;
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.8), inset 0 0 15px rgba(0, 229, 255, 0.15);
-            border-color: var(--neon-cyan-light);
+            box-shadow: 0 0 50px rgba(0, 229, 255, 1), inset 0 0 25px rgba(0, 229, 255, 0.3);
+            border-color: #4df9ff;
+            background: linear-gradient(135deg, rgba(0, 60, 100, 1), rgba(20, 50, 80, 1));
         }
 
         select option {
-            background-color: var(--deep-space);
-            color: var(--neon-cyan);
-            padding: 12px;
+            background-color: #001a33;
+            color: #00e5ff;
+            padding: 14px;
             margin: 5px 0;
             border: none;
-            font-size: 15px;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         select option:hover {
-            background-color: rgba(0, 229, 255, 0.2);
-            color: var(--neon-cyan-light);
+            background-color: #0096ff;
+            color: white;
         }
 
         select option:checked {
             background: linear-gradient(#0096ff, #0096ff);
-            background-color: var(--cool-blue) !important;
-            color: white;
+            background-color: #00e5ff !important;
+            color: #001a33 !important;
         }
 
         /* Thermal Heatmap Gradient */
@@ -210,44 +217,48 @@
                 #ffff00 65%,
                 #ff6b35 80%,
                 #ff2d55 100%);
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.4);
         }
 
         /* Card Styles */
         .card-glow {
-            background: rgba(26, 31, 58, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            padding: 24px;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.9), rgba(26, 31, 58, 0.85));
+            backdrop-filter: blur(15px);
+            border-radius: 14px;
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            padding: 28px;
             transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .card-glow:hover {
-            border-color: rgba(0, 229, 255, 0.6);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+            border-color: rgba(0, 229, 255, 0.8);
+            box-shadow: 0 8px 50px rgba(0, 229, 255, 0.25);
+            background: linear-gradient(135deg, rgba(15, 25, 50, 0.95), rgba(30, 40, 70, 0.9));
         }
 
         /* Number Display */
         .number-display {
-            font-size: 32px;
-            font-weight: bold;
+            font-size: 40px;
+            font-weight: 900;
             font-family: 'Courier New', monospace;
             background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-cyan-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
         }
 
         .number-display-orange {
-            font-size: 32px;
-            font-weight: bold;
+            font-size: 40px;
+            font-weight: 900;
             font-family: 'Courier New', monospace;
             background: linear-gradient(135deg, var(--solar-orange) 0%, var(--thermal-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
         }
 
         /* Ticker Animation */
@@ -261,7 +272,7 @@
         }
 
         .ticker-text {
-            animation: ticker-scroll 15s linear infinite;
+            animation: ticker-scroll 20s linear infinite;
             white-space: nowrap;
         }
 
@@ -295,16 +306,17 @@
         }
 
         .logo-badge {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 24px;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+            font-size: 28px;
+            border: 3px solid var(--neon-cyan);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(0, 229, 255, 0.15));
         }
 
         /* Chart Container */
@@ -331,22 +343,22 @@
 
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--space-black);
+            background: rgba(0, 10, 20, 0.5);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--neon-cyan);
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            background: linear-gradient(180deg, var(--neon-cyan), var(--solar-orange));
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--neon-cyan-light);
+            background: linear-gradient(180deg, var(--neon-cyan-light), var(--solar-orange-hot));
         }
 
         /* Temperature Indicator */
@@ -354,14 +366,15 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            background: rgba(255, 107, 53, 0.1);
-            border: 1px solid var(--solar-orange);
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid var(--solar-orange);
+            font-weight: 600;
         }
 
         .temp-cool {
-            background: rgba(0, 150, 255, 0.1);
+            background: rgba(0, 150, 255, 0.15);
             border-color: var(--cool-blue);
         }
 
@@ -382,118 +395,133 @@
         /* Enhanced Preset Button Styling */
         .preset-btn {
             width: 100%;
-            padding: 12px 16px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 800;
             cursor: pointer;
-            border: 2px solid;
-            transition: all 0.3s ease;
+            border: 3px solid;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            min-height: 44px;
+            gap: 10px;
+            min-height: 50px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .preset-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
 
         .preset-btn-cool {
-            border-color: var(--neon-cyan);
-            color: var(--neon-cyan);
-            background: rgba(0, 229, 255, 0.05);
+            border-color: #00e5ff;
+            color: #00e5ff;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 150, 255, 0.08));
         }
 
         .preset-btn-cool:hover {
-            background: rgba(0, 229, 255, 0.15);
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.25), rgba(0, 150, 255, 0.15));
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.8), inset 0 0 20px rgba(0, 229, 255, 0.1);
+            border-color: #4df9ff;
         }
 
         .preset-btn-heat {
-            border-color: var(--solar-orange);
-            color: var(--solar-orange);
-            background: rgba(255, 107, 53, 0.05);
+            border-color: #ff6b35;
+            color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 66, 0.08));
         }
 
         .preset-btn-heat:hover {
-            background: rgba(255, 107, 53, 0.15);
-            box-shadow: 0 0 25px rgba(255, 107, 53, 0.6);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.25), rgba(255, 140, 66, 0.15));
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.8), inset 0 0 20px rgba(255, 107, 53, 0.1);
+            border-color: #ff8c42;
         }
 
         .preset-btn-balanced {
             border-color: #00ff88;
             color: #00ff88;
-            background: rgba(0, 255, 136, 0.05);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 100, 0.08));
         }
 
         .preset-btn-balanced:hover {
-            background: rgba(0, 255, 136, 0.15);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 200, 100, 0.15));
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.8), inset 0 0 20px rgba(0, 255, 136, 0.1);
+            border-color: #33ff99;
         }
 
         /* Label Enhancement */
         .control-label {
             display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #4df9ff;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .control-label-icon {
             display: inline-block;
-            margin-right: 6px;
-            font-size: 16px;
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        /* Value Display */
+        .value-display {
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #00e5ff 0%, #4df9ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
 <body class="grid-bg">
     <!-- HEADER -->
-    <header class="border-b neon-border bg-opacity-50 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b neon-border bg-opacity-50 backdrop-blur-md sticky top-0 z-50" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(10, 14, 39, 0.9));">
         <div class="max-w-full px-6 py-4">
             <div class="flex items-center justify-between mb-4">
                 <!-- Logo and Title -->
                 <div class="flex items-center gap-4">
                     <div class="logo-container">
-                        <div class="logo-badge" style="background: linear-gradient(135deg, #00e5ff, #0096ff);">
+                        <div class="logo-badge">
                             🛰️
                         </div>
                         <div>
-                            <h1 class="text-3xl font-bold glow-text">Antariksh Thermal-AI</h1>
-                            <p class="text-xs text-gray-400">Optimization Hub</p>
+                            <h1 class="text-4xl font-black glow-text">Antariksh Thermal-AI</h1>
+                            <p class="text-xs text-cyan-300 tracking-widest">OPTIMIZATION HUB</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Center Section - System Status -->
                 <div class="flex items-center gap-8">
-                    <div class="digital-clock glow-text" id="digitalClock">
+                    <div class="digital-clock glow-text text-2xl" id="digitalClock">
                         00:00:00 UTC
                     </div>
-                    <div class="flex items-center gap-2 pulse-badge px-4 py-2 rounded-full neon-border">
-                        <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                        <span class="text-sm font-semibold glow-text">System Operational</span>
+                    <div class="flex items-center gap-2 pulse-badge px-5 py-2 rounded-full neon-border">
+                        <div class="w-4 h-4 rounded-full bg-green-400 animate-pulse"></div>
+                        <span class="text-sm font-bold glow-text">SYSTEM OPERATIONAL</span>
                     </div>
                 </div>
 
                 <!-- Right Section - Branding -->
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-6">
                     <div class="text-center">
-                        <div class="text-xs text-gray-400">Powered By</div>
-                        <div class="text-sm font-bold glow-text">ISRO</div>
+                        <div class="text-xs text-gray-400 tracking-widest">POWERED BY</div>
+                        <div class="text-lg font-black glow-text">ISRO</div>
                     </div>
-                    <div class="w-px h-8 bg-gradient-to-b from-neon-cyan to-solar-orange opacity-50"></div>
+                    <div class="w-px h-10 bg-gradient-to-b from-neon-cyan to-solar-orange opacity-70"></div>
                     <div class="text-center">
-                        <div class="text-xs text-gray-400">Hackathon</div>
-                        <div class="text-sm font-bold glow-text-orange">Hack2Skill</div>
+                        <div class="text-xs text-gray-400 tracking-widest">HACKATHON</div>
+                        <div class="text-lg font-black glow-text-orange">Hack2Skill</div>
                     </div>
                 </div>
             </div>
@@ -506,8 +534,8 @@
             <!-- LEFT PANEL - CONTROL VARIABLES -->
             <div class="card-glow neon-border overflow-y-auto">
                 <div class="mb-8">
-                    <h2 class="text-xl font-bold glow-text mb-6 flex items-center gap-2">
-                        <span>⚙️</span> Control Variables
+                    <h2 class="text-2xl font-black glow-text mb-8 flex items-center gap-3 tracking-wider">
+                        <span class="text-3xl">⚙️</span> CONTROL VARIABLES
                     </h2>
 
                     <!-- City Selector -->
@@ -516,59 +544,59 @@
                             <span class="control-label-icon">🏙️</span> Target Microclimate
                         </label>
                         <select id="citySelector" class="w-full smooth-transition">
-                            <option value="delhi">🇮🇳 New Delhi Microclimate</option>
-                            <option value="mumbai">🌊 Mumbai Coastal Grid</option>
-                            <option value="bangalore">🏛️ Bengaluru Urban Center</option>
+                            <option value="delhi">🇮🇳 NEW DELHI MICROCLIMATE</option>
+                            <option value="mumbai">🌊 MUMBAI COASTAL GRID</option>
+                            <option value="bangalore">🏛️ BENGALURU URBAN CENTER</option>
                         </select>
                     </div>
 
                     <!-- Vegetation Cover Slider -->
                     <div class="mb-8">
-                        <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center justify-between mb-4">
                             <label class="control-label mb-0">
-                                <span class="control-label-icon">🌿</span> Vegetation / Canopy Density
+                                <span class="control-label-icon">🌿</span> Vegetation Density
                             </label>
-                            <span class="text-lg font-bold glow-text" id="vegValue">0%</span>
+                            <span class="value-display" id="vegValue">0%</span>
                         </div>
                         <input type="range" id="vegetationSlider" min="0" max="100" value="0" class="w-full smooth-transition">
-                        <div class="text-xs text-gray-500 mt-2">Tree cover & green space impact</div>
+                        <div class="text-xs text-gray-400 mt-2 tracking-wide">Tree cover & green space impact</div>
                     </div>
 
                     <!-- Albedo Factor Slider -->
                     <div class="mb-8">
-                        <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center justify-between mb-4">
                             <label class="control-label mb-0">
                                 <span class="control-label-icon">✨</span> Albedo / Cool Roofs
                             </label>
-                            <span class="text-lg font-bold glow-text" id="albedoValue">0%</span>
+                            <span class="value-display" id="albedoValue">0%</span>
                         </div>
                         <input type="range" id="albedoSlider" min="0" max="100" value="0" class="w-full smooth-transition">
-                        <div class="text-xs text-gray-500 mt-2">Reflective surface mitigation</div>
+                        <div class="text-xs text-gray-400 mt-2 tracking-wide">Reflective surface mitigation</div>
                     </div>
 
                     <!-- Urban Built-up Density Slider -->
                     <div class="mb-8">
-                        <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center justify-between mb-4">
                             <label class="control-label mb-0">
                                 <span class="control-label-icon">🏢</span> Built-up Density
                             </label>
-                            <span class="text-lg font-bold number-display-orange" id="builtupValue">0%</span>
+                            <span class="number-display-orange" id="builtupValue">0%</span>
                         </div>
                         <input type="range" id="builtupSlider" min="0" max="100" value="0" class="w-full smooth-transition">
-                        <div class="text-xs text-gray-500 mt-2">Concrete & asphalt concentration</div>
+                        <div class="text-xs text-gray-400 mt-2 tracking-wide">Concrete & asphalt concentration</div>
                     </div>
 
                     <!-- Quick Actions -->
-                    <div class="mt-8 pt-6 border-t border-gray-700">
-                        <p class="control-label text-xs">Quick Presets</p>
+                    <div class="mt-10 pt-8 border-t border-cyan-900">
+                        <p class="control-label text-xs mb-4">⚡ QUICK PRESETS</p>
                         <button class="preset-btn preset-btn-cool" onclick="setPreset('cool')">
-                            <span>🧊</span> Cool City
+                            <span>🧊</span> COOL CITY
                         </button>
                         <button class="preset-btn preset-btn-heat" onclick="setPreset('heat')">
-                            <span>🔥</span> Heat Island
+                            <span>🔥</span> HEAT ISLAND
                         </button>
                         <button class="preset-btn preset-btn-balanced" onclick="setPreset('balanced')">
-                            <span>⚖️</span> Balanced
+                            <span>⚖️</span> BALANCED
                         </button>
                     </div>
                 </div>
@@ -576,64 +604,64 @@
 
             <!-- CENTER PANEL - INTERACTIVE HEATMAP -->
             <div class="card-glow neon-border overflow-hidden flex flex-col">
-                <h2 class="text-xl font-bold glow-text mb-4 flex items-center gap-2">
-                    <span>🗺️</span> Thermal Heatmap Simulation
+                <h2 class="text-2xl font-black glow-text mb-4 flex items-center gap-2 tracking-wider">
+                    <span class="text-3xl">🗺️</span> THERMAL HEATMAP SIMULATION
                 </h2>
 
                 <!-- Heatmap Container -->
-                <div class="flex-1 relative rounded-lg overflow-hidden thermal-gradient" id="heatmapContainer" style="min-height: 400px;">
+                <div class="flex-1 relative rounded-xl overflow-hidden thermal-gradient" id="heatmapContainer" style="min-height: 400px;">
                     <!-- City Label -->
-                    <div class="absolute top-4 left-4 z-10">
-                        <div class="text-white font-bold text-lg glow-text" id="cityLabel">New Delhi Microclimate</div>
-                        <div class="text-gray-400 text-xs">Live Thermal Simulation</div>
+                    <div class="absolute top-6 left-6 z-10">
+                        <div class="text-white font-black text-xl glow-text tracking-wide" id="cityLabel">New Delhi Microclimate</div>
+                        <div class="text-cyan-200 text-xs tracking-widest">LIVE THERMAL SIMULATION</div>
                     </div>
 
                     <!-- Heatmap Grid Visualization -->
-                    <div class="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-1 p-4 opacity-70" id="heatmapGrid">
+                    <div class="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-2 p-6 opacity-75" id="heatmapGrid">
                         <!-- Grid cells will be generated by JS -->
                     </div>
 
                     <!-- Thermal Indicators -->
-                    <div class="absolute bottom-4 right-4 flex flex-col gap-2 text-right">
+                    <div class="absolute bottom-6 right-6 flex flex-col gap-3 text-right">
                         <div class="temp-indicator">
-                            <span class="text-xs">Max: <span id="maxTemp" class="font-bold">42°C</span></span>
+                            <span class="text-xs tracking-widest">MAX: <span id="maxTemp" class="font-black">42°C</span></span>
                         </div>
                         <div class="temp-indicator temp-cool">
-                            <span class="text-xs">Min: <span id="minTemp" class="font-bold">28°C</span></span>
+                            <span class="text-xs tracking-widest">MIN: <span id="minTemp" class="font-black">28°C</span></span>
                         </div>
                     </div>
 
                     <!-- Center Information -->
                     <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                         <div class="text-center">
-                            <div class="text-6xl font-bold number-display-orange mb-2" id="centerTemp">42°C</div>
-                            <div class="text-gray-300 text-sm">Zone Average Temperature</div>
+                            <div class="text-7xl font-black number-display-orange mb-3" id="centerTemp">42°C</div>
+                            <div class="text-gray-300 text-sm tracking-wider">ZONE AVERAGE TEMPERATURE</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Legend -->
-                <div class="mt-4 p-3 bg-black bg-opacity-30 rounded-lg">
-                    <div class="flex items-center justify-between text-xs text-gray-400">
+                <div class="mt-4 p-4 bg-black bg-opacity-50 rounded-xl border border-cyan-900">
+                    <div class="flex items-center justify-between text-xs text-gray-300 tracking-widest font-bold">
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded" style="background: #0096ff;"></div>
-                            <span>Cool</span>
+                            <div class="w-4 h-4 rounded-full" style="background: #0096ff; box-shadow: 0 0 10px #0096ff;"></div>
+                            <span>COOL</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded" style="background: #00ff88;"></div>
-                            <span>Moderate</span>
+                            <div class="w-4 h-4 rounded-full" style="background: #00ff88; box-shadow: 0 0 10px #00ff88;"></div>
+                            <span>MODERATE</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded" style="background: #ffff00;"></div>
-                            <span>Warm</span>
+                            <div class="w-4 h-4 rounded-full" style="background: #ffff00; box-shadow: 0 0 10px #ffff00;"></div>
+                            <span>WARM</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded" style="background: #ff6b35;"></div>
-                            <span>Hot</span>
+                            <div class="w-4 h-4 rounded-full" style="background: #ff6b35; box-shadow: 0 0 10px #ff6b35;"></div>
+                            <span>HOT</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded" style="background: #ff2d55;"></div>
-                            <span>Critical</span>
+                            <div class="w-4 h-4 rounded-full" style="background: #ff2d55; box-shadow: 0 0 10px #ff2d55;"></div>
+                            <span>CRITICAL</span>
                         </div>
                     </div>
                 </div>
@@ -641,62 +669,62 @@
 
             <!-- RIGHT PANEL - AI ANALYTICS -->
             <div class="card-glow neon-border overflow-y-auto flex flex-col">
-                <h2 class="text-xl font-bold glow-text mb-6 flex items-center gap-2">
-                    <span>🤖</span> AI Analytics
+                <h2 class="text-2xl font-black glow-text mb-8 flex items-center gap-2 tracking-wider">
+                    <span class="text-3xl">🤖</span> AI ANALYTICS
                 </h2>
 
                 <!-- LST Prediction Card -->
-                <div class="mb-6 p-4 rounded-lg border border-thermal-red bg-opacity-20 bg-red-500">
-                    <div class="text-xs font-semibold text-gray-400 mb-2">📊 Predicted Land Surface Temperature</div>
-                    <div class="number-display-orange mb-2" id="lstValue">42.0°C</div>
-                    <div class="text-xs text-gray-500 mb-3">Real-time thermal forecast</div>
-                    <div class="w-full h-2 bg-gradient-to-r from-blue-500 via-yellow-500 to-red-500 rounded-full"></div>
+                <div class="mb-6 p-5 rounded-xl border-2 border-red-500 bg-gradient-to-br from-red-950 to-red-900 bg-opacity-30">
+                    <div class="text-xs font-black text-red-300 mb-3 tracking-widest">📊 PREDICTED LAND SURFACE TEMP</div>
+                    <div class="number-display-orange mb-3" id="lstValue">42.0°C</div>
+                    <div class="text-xs text-gray-400 mb-3 tracking-wide">Real-time thermal forecast</div>
+                    <div class="w-full h-3 bg-gradient-to-r from-blue-600 via-yellow-500 to-red-600 rounded-full shadow-lg"></div>
                 </div>
 
                 <!-- Thermal ROI Index -->
-                <div class="mb-6 p-4 rounded-lg neon-border">
-                    <div class="text-xs font-semibold text-gray-400 mb-2">🎯 Thermal ROI Index</div>
-                    <div class="number-display mb-2" id="roiValue">25</div>
-                    <div class="text-xs text-gray-500">Intervention efficiency score</div>
-                    <div class="mt-3 flex items-center justify-between text-xs text-gray-400">
-                        <span>Low Impact</span>
-                        <span id="roiStatus">Moderate</span>
-                        <span>High Impact</span>
+                <div class="mb-6 p-5 rounded-xl neon-border bg-gradient-to-br from-cyan-950 to-cyan-900 bg-opacity-20">
+                    <div class="text-xs font-black text-cyan-300 mb-3 tracking-widest">🎯 THERMAL ROI INDEX</div>
+                    <div class="number-display mb-3" id="roiValue">25</div>
+                    <div class="text-xs text-gray-400 mb-4 tracking-wide">Intervention efficiency score</div>
+                    <div class="flex items-center justify-between text-xs text-gray-400 font-bold">
+                        <span>LOW</span>
+                        <span id="roiStatus">MODERATE</span>
+                        <span>HIGH</span>
                     </div>
                 </div>
 
                 <!-- AC Grid Load Reduction -->
-                <div class="mb-6 p-4 rounded-lg border border-green-500 bg-opacity-20 bg-green-500">
-                    <div class="text-xs font-semibold text-gray-400 mb-2">⚡ AC Power Grid Load Reduction</div>
+                <div class="mb-6 p-5 rounded-xl border-2 border-green-500 bg-gradient-to-br from-green-950 to-green-900 bg-opacity-30">
+                    <div class="text-xs font-black text-green-300 mb-3 tracking-widest">⚡ AC GRID LOAD REDUCTION</div>
                     <div class="number-display" style="color: #00ff88;" id="gridValue">12%</div>
-                    <div class="text-xs text-gray-500">Energy consumption savings</div>
+                    <div class="text-xs text-gray-400 tracking-wide">Energy consumption savings</div>
                 </div>
 
                 <!-- 24-Hour Temperature Trend -->
-                <div class="mb-6 p-4 rounded-lg neon-border flex-1 flex flex-col">
-                    <div class="text-xs font-semibold text-gray-400 mb-3">📈 24-Hour Temperature Trend</div>
+                <div class="mb-6 p-5 rounded-xl neon-border flex-1 flex flex-col bg-gradient-to-br from-blue-950 to-blue-900 bg-opacity-20">
+                    <div class="text-xs font-black text-cyan-300 mb-4 tracking-widest">📈 24-HOUR TEMPERATURE TREND</div>
                     <div class="flex-1 chart-container">
                         <canvas id="tempTrendChart"></canvas>
                     </div>
                 </div>
 
                 <!-- UV Index Alert -->
-                <div class="p-3 rounded-lg bg-opacity-20 bg-orange-500 border border-orange-500">
-                    <div class="text-xs font-bold text-orange-300">⚠️ UV Alert</div>
-                    <div class="text-xs text-gray-400 mt-1" id="uvAlert">Moderate exposure expected</div>
+                <div class="p-5 rounded-xl border-2 border-orange-500 bg-gradient-to-br from-orange-950 to-orange-900 bg-opacity-30">
+                    <div class="text-xs font-black text-orange-300 tracking-widest">⚠️ UV ALERT SYSTEM</div>
+                    <div class="text-xs text-gray-300 mt-2 tracking-wide" id="uvAlert">Moderate exposure expected</div>
                 </div>
             </div>
         </div>
     </main>
 
     <!-- BOTTOM TICKER & FOOTER -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-space-black via-deep-space to-space-black border-t neon-border">
+    <footer class="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-black via-blue-950 to-black border-t neon-border">
         <!-- AI Recommendation Ticker -->
-        <div class="overflow-hidden bg-opacity-50 py-3 px-6">
-            <div class="flex items-center gap-4">
-                <span class="text-xs font-bold text-neon-cyan whitespace-nowrap animate-pulse">🤖 AI RECOMMENDATION:</span>
+        <div class="overflow-hidden bg-opacity-70 py-4 px-6" style="background: rgba(0, 0, 0, 0.7);">
+            <div class="flex items-center gap-6">
+                <span class="text-xs font-black text-cyan-400 whitespace-nowrap animate-pulse tracking-widest">🤖 AI RECOMMENDATION:</span>
                 <div class="flex-1 overflow-hidden">
-                    <div class="ticker-text text-sm text-gray-300" id="recommendationTicker">
+                    <div class="ticker-text text-sm text-gray-200 tracking-wide font-semibold" id="recommendationTicker">
                         Analyzing thermal patterns... System initialized and ready for optimization analysis.
                     </div>
                 </div>
@@ -704,17 +732,17 @@
         </div>
 
         <!-- Data Credits -->
-        <div class="text-xs text-gray-500 px-6 py-2 border-t border-gray-800 flex justify-between items-center flex-wrap gap-2">
-            <div>
+        <div class="text-xs text-gray-500 px-6 py-3 border-t border-gray-900 flex justify-between items-center flex-wrap gap-3 bg-black bg-opacity-50">
+            <div class="tracking-wide">
                 <span>© 2024 Antariksh Thermal-AI | Bharatiya Antariksh Hackathon</span>
                 <span class="mx-2">•</span>
-                <a href="https://www.isro.gov.in/" target="_blank" class="text-neon-cyan hover:underline">ISRO Data</a>
+                <a href="https://www.isro.gov.in/" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold">ISRO DATA</a>
                 <span class="mx-2">•</span>
-                <a href="https://www.nasa.gov/earth/climate/" target="_blank" class="text-neon-cyan hover:underline">NASA Earth Climate</a>
+                <a href="https://www.nasa.gov/earth/climate/" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold">NASA EARTH</a>
                 <span class="mx-2">•</span>
-                <a href="https://www.worldbank.org/en/topic/urbandevelopment/brief/heat-smart-cities" target="_blank" class="text-neon-cyan hover:underline">World Bank Urban Heat</a>
+                <a href="https://www.worldbank.org/en/topic/urbandevelopment/brief/heat-smart-cities" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-semibold">WORLD BANK</a>
             </div>
-            <div class="text-gray-600">v1.0 | Live Dashboard</div>
+            <div class="text-gray-600 font-bold tracking-wider">v2.0 | LIVE DASHBOARD</div>
         </div>
     </footer>
 
@@ -776,10 +804,9 @@
             const city = document.getElementById('citySelector').value;
             const baseTemp = cityData[city].baseTemp;
             
-            // Temperature decrease formula
-            const vegEffect = (sliderValues.vegetation / 100) * 8; // -8°C max
-            const albedoEffect = (sliderValues.albedo / 100) * 6; // -6°C max
-            const builtupFactor = (sliderValues.buildup / 100) * 12; // +12°C max
+            const vegEffect = (sliderValues.vegetation / 100) * 8;
+            const albedoEffect = (sliderValues.albedo / 100) * 6;
+            const builtupFactor = (sliderValues.buildup / 100) * 12;
             
             const calculatedTemp = baseTemp - vegEffect - albedoEffect + builtupFactor;
             return Math.round(calculatedTemp * 10) / 10;
@@ -790,40 +817,28 @@
             const city = document.getElementById('citySelector').value;
             const cityInfo = cityData[city];
             
-            // Update city label
             document.getElementById('cityLabel').textContent = cityInfo.name;
             
-            // Calculate metrics
             const lst = calculateTemperature();
             const roi = Math.min(100, Math.round((sliderValues.vegetation + sliderValues.albedo) / 2));
             const gridReduction = Math.round((sliderValues.vegetation * 0.15 + sliderValues.albedo * 0.12));
             
-            // Update displays
             document.getElementById('lstValue').textContent = lst.toFixed(1) + '°C';
             document.getElementById('centerTemp').textContent = lst.toFixed(1) + '°C';
             document.getElementById('roiValue').textContent = roi;
             document.getElementById('gridValue').textContent = gridReduction + '%';
             
-            // Update min/max temps
             const maxTemp = cityInfo.baseTemp + (sliderValues.buildup / 100) * 10;
             const minTemp = cityInfo.baseTemp - 14 + (sliderValues.vegetation / 100) * 8;
             document.getElementById('maxTemp').textContent = Math.round(maxTemp) + '°C';
             document.getElementById('minTemp').textContent = Math.round(Math.max(minTemp, 20)) + '°C';
             
-            // Update ROI status
-            const roiStatus = roi < 30 ? 'Low Impact' : roi < 70 ? 'Moderate Impact' : 'High Impact';
+            const roiStatus = roi < 30 ? 'LOW IMPACT' : roi < 70 ? 'MODERATE IMPACT' : 'HIGH IMPACT';
             document.getElementById('roiStatus').textContent = roiStatus;
             
-            // Update heatmap
             updateHeatmap(lst);
-            
-            // Update recommendations
             updateRecommendations(lst, roi);
-            
-            // Update chart
             updateTempTrendChart(lst);
-            
-            // Update UV Alert
             updateUVAlert(sliderValues.vegetation);
         }
 
@@ -845,9 +860,10 @@
                 const variation = (Math.random() - 0.5) * 6;
                 const cellTemp = avgTemp + variation;
                 const cell = document.createElement('div');
-                cell.className = 'rounded-lg cursor-pointer hover:scale-105 smooth-transition';
+                cell.className = 'rounded-lg cursor-pointer hover:scale-110 smooth-transition';
                 cell.style.backgroundColor = getColorForTemp(cellTemp);
-                cell.style.opacity = '0.8';
+                cell.style.opacity = '0.85';
+                cell.style.boxShadow = `0 0 15px ${getColorForTemp(cellTemp)}`;
                 cell.title = `${Math.round(cellTemp)}°C`;
                 container.appendChild(cell);
             }
@@ -862,8 +878,7 @@
             
             for (let h = 0; h < 24; h++) {
                 hours.push(h + ':00');
-                // Simulate realistic 24-hour temperature curve
-                const timeOfDay = (h - 6) / 12; // Peak around noon (6 = -1, 18 = +1)
+                const timeOfDay = (h - 6) / 12;
                 const tempVariation = Math.sin(timeOfDay * Math.PI) * 8;
                 temps.push(Math.max(18, baseTemp + tempVariation));
             }
@@ -880,23 +895,22 @@
                         label: 'Temperature (°C)',
                         data: temps,
                         borderColor: '#00e5ff',
-                        backgroundColor: 'rgba(0, 229, 255, 0.1)',
-                        borderWidth: 2,
+                        backgroundColor: 'rgba(0, 229, 255, 0.15)',
+                        borderWidth: 3,
                         tension: 0.4,
                         fill: true,
                         pointBackgroundColor: '#ff6b35',
                         pointBorderColor: '#fff',
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        pointBorderWidth: 2
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            display: false
-                        }
+                        legend: { display: false }
                     },
                     scales: {
                         y: {
@@ -904,21 +918,19 @@
                             min: 15,
                             max: 50,
                             grid: {
-                                color: 'rgba(42, 63, 95, 0.3)',
+                                color: 'rgba(0, 229, 255, 0.1)',
                                 drawBorder: false
                             },
                             ticks: {
-                                color: '#a0aec0',
-                                font: { size: 10 }
+                                color: '#4df9ff',
+                                font: { size: 11, weight: 'bold' }
                             }
                         },
                         x: {
-                            grid: {
-                                display: false
-                            },
+                            grid: { display: false },
                             ticks: {
-                                color: '#a0aec0',
-                                font: { size: 10 },
+                                color: '#4df9ff',
+                                font: { size: 11, weight: 'bold' },
                                 maxRotation: 45
                             }
                         }
@@ -936,15 +948,15 @@
             let recommendation = '';
             
             if (lst > 44) {
-                recommendation = `🚨 CRITICAL: Temperature ${lst}°C exceeds safe levels. Recommend immediate deployment of 40%+ cool roofs and emergency green corridors in high buildup zones.`;
+                recommendation = `🚨 CRITICAL ALERT: Temperature ${lst}°C exceeds safe limits! Deploy emergency cool roofs (40%+) and green corridors immediately in high buildup zones.`;
             } else if (lst > 40) {
-                recommendation = `⚠️ WARNING: High thermal stress detected. Deploy cool roof paint on ${Math.round(100 - albedo)}% of urban surfaces. Plant 5000+ trees in Grid Zones A & B.`;
+                recommendation = `⚠️ WARNING: High thermal stress detected at ${lst}°C. Deploy cool roof paint on ${Math.round(100 - albedo)}% of urban infrastructure. Plant 5000+ trees in Grid Zones A & B.`;
             } else if (lst > 35) {
-                recommendation = `📊 MODERATE: Temperature ${lst}°C is manageable. Increase vegetation cover by ${Math.round(Math.max(0, 50 - veg))}%. Install reflective surfaces on ${Math.round(Math.max(0, 60 - albedo))}% of infrastructure.`;
+                recommendation = `📊 MODERATE CONDITIONS: Temperature ${lst}°C manageable. Increase vegetation by ${Math.round(Math.max(0, 50 - veg))}%. Install reflective surfaces on ${Math.round(Math.max(0, 60 - albedo))}% infrastructure.`;
             } else if (veg > 60 && albedo > 50) {
-                recommendation = `✅ OPTIMAL: Zone is thermally balanced! Maintain current vegetation (${veg}%) and albedo (${albedo}%). Expected grid load reduction: ${Math.round(veg * 0.15 + albedo * 0.12)}%.`;
+                recommendation = `✅ OPTIMAL THERMAL BALANCE: Zone perfectly balanced at ${lst}°C! Maintain vegetation (${veg}%) and albedo (${albedo}%). Grid load reduction: ${Math.round(veg * 0.15 + albedo * 0.12)}%.`;
             } else {
-                recommendation = `🔧 OPTIMIZING: Consider increasing tree canopy to ${Math.round(veg + 30)}% and cool roofing to ${Math.round(albedo + 25)}% for maximum thermal mitigation.`;
+                recommendation = `🔧 OPTIMIZATION RECOMMENDED: Increase tree canopy to ${Math.round(veg + 30)}% and cool roofing to ${Math.round(albedo + 25)}% for maximum thermal mitigation.`;
             }
             
             document.getElementById('recommendationTicker').textContent = recommendation;
@@ -952,15 +964,12 @@
 
         // ===== UPDATE UV ALERT =====
         function updateUVAlert(vegCover) {
-            let uvLevel = 'Moderate';
             let uvText = 'Moderate UV exposure expected';
             
             if (vegCover > 70) {
-                uvLevel = 'Low';
-                uvText = '✅ Low UV exposure - vegetation providing excellent protection';
+                uvText = '✅ LOW EXPOSURE: Vegetation providing excellent protection';
             } else if (vegCover < 30) {
-                uvLevel = 'High';
-                uvText = '🔴 High UV exposure - recommend personal protection measures';
+                uvText = '🔴 HIGH EXPOSURE: Personal protection measures recommended';
             }
             
             document.getElementById('uvAlert').textContent = uvText;
@@ -982,7 +991,6 @@
                 document.getElementById('builtupSlider').value = 50;
             }
             
-            // Trigger input events
             document.getElementById('vegetationSlider').dispatchEvent(new Event('input'));
             document.getElementById('albedoSlider').dispatchEvent(new Event('input'));
             document.getElementById('builtupSlider').dispatchEvent(new Event('input'));
