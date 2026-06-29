@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antariksh Thermal-AI Optimization Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Deep Space Theme Colors */
+        :root {
+            --space-black: #0a0e27;
+            --deep-space: #1a1f3a;
+            --neon-cyan: #00e5ff;
+            --neon-cyan-light: #4df9ff;
+            --solar-orange: #ff6b35;
+            --solar-orange-hot: #ff8c42;
+            --cool-blue: #0096ff;
+            --thermal-red: #ff2d55;
+            --grid-line: #2a3f5f;
+            --text-primary: #e8eef7;
+            --text-secondary: #a0aec0;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--space-black) 0%, var(--deep-space) 100%);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Glowing Text Effect */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .glow-text-orange {
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5), 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            background-image:
+                linear-gradient(0deg, transparent 24%, rgba(42, 63, 95, 0.1) 25%, rgba(42, 63, 95, 0.1) 26%, transparent 27%, transparent 74%, rgba(42, 63, 95, 0.1) 75%, rgba(42, 63, 95, 0.1) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(42, 63, 95, 0.1) 25%, rgba(42, 63, 95, 0.1) 26%, transparent 27%, transparent 74%, rgba(42, 63, 95, 0.1) 75%, rgba(42, 63, 95, 0.1) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            animation: grid-scroll 20s linear infinite;
+        }
+
+        @keyframes grid-scroll {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* Neon Border */
+        .neon-border {
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), inset 0 0 20px rgba(0, 229, 255, 0.05);
+        }
+
+        .neon-border-orange {
+            border: 1px solid var(--solar-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3), inset 0 0 20px rgba(255, 107, 53, 0.05);
+        }
+
+        /* Smooth Transitions */
+        .smooth-transition {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hover Glow */
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.5), 0 0 60px rgba(0, 229, 255, 0.2);
+        }
+
+        .hover-glow-orange:hover {
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.5), 0 0 60px rgba(255, 107, 53, 0.2);
+        }
+
+        /* Status Badge Animation */
+        .pulse-badge {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+            }
+        }
+
+        /* Digital Clock */
+        .digital-clock {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* Slider Styling */
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--cool-blue) 0%, var(--neon-cyan) 50%, var(--solar-orange) 100%);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-cyan);
+            border: 2px solid var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            box-shadow: 0 0 25px rgba(0, 229, 255, 1), 0 0 40px rgba(0, 229, 255, 0.5);
+            transform: scale(1.2);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--neon-cyan);
+            border: 2px solid var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            box-shadow: 0 0 25px rgba(0, 229, 255, 1), 0 0 40px rgba(0, 229, 255, 0.5);
+            transform: scale(1.2);
+        }
+
+        /* Dropdown Styling */
+        select {
+            background-color: var(--deep-space);
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+
+        select:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+        }
+
+        /* Thermal Heatmap Gradient */
+        .thermal-gradient {
+            background: linear-gradient(135deg,
+                #0096ff 0%,
+                #00e5ff 25%,
+                #00ff88 50%,
+                #ffff00 65%,
+                #ff6b35 80%,
+                #ff2d55 100%);
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Card Styles */
+        .card-glow {
+            background: rgba(26, 31, 58, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            padding: 24px;
+            transition: all 0.4s ease;
+        }
+
+        .card-glow:hover {
+            border-color: rgba(0, 229, 255, 0.6);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+        }
+
+        /* Number Display */
+        .number-display {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-cyan-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .number-display-orange {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--solar-orange) 0%, var(--thermal-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Ticker Animation */
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .ticker-text {
+            animation: ticker-scroll 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        /* Responsive Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 120px);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Logo Container */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1600px) {
+            .dashboard-grid {
+                grid-template-columns: 280px 1fr 300px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+                gap: 15px;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--space-black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-cyan-light);
+        }
+
+        /* Temperature Indicator */
+        .temp-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid var(--solar-orange);
+        }
+
+        .temp-cool {
+            background: rgba(0, 150, 255, 0.1);
+            border-color: var(--cool-blue);
+        }
+
+        /* Loading Animation */
+        @keyframes loading-spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-spin {
+            animation: loading-spin 2s linear infinite;
+        }
+    </style>
+</head>
+<body class="grid-bg">
+    <!-- HEADER -->
+    <header class="border-b neon-border bg-opacity-50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-full px-6 py-4">
+            <div class="flex items-center justify-between mb-4">
+                <!-- Logo and Title -->
+                <div class="flex items-center gap-4">
+                    <div class="logo-container">
+                        <div class="logo-badge" style="background: linear-gradient(135deg, #00e5ff, #0096ff);">
+                            🛰️
+                        </div>
+                        <div>
+                            <h1 class="text-3xl font-bold glow-text">Antariksh Thermal-AI</h1>
+                            <p class="text-xs text-gray-400">Optimization Hub</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Section - System Status -->
+                <div class="flex items-center gap-8">
+                    <div class="digital-clock glow-text" id="digitalClock">
+                        00:00:00 UTC
+                    </div>
+                    <div class="flex items-center gap-2 pulse-badge px-4 py-2 rounded-full neon-border">
+                        <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-sm font-semibold glow-text">System Operational</span>
+                    </div>
+                </div>
+
+                <!-- Right Section - Branding -->
+                <div class="flex items-center gap-4">
+                    <div class="text-center">
+                        <div class="text-xs text-gray-400">Powered By</div>
+                        <div class="text-sm font-bold glow-text">ISRO</div>
+                    </div>
+                    <div class="w-px h-8 bg-gradient-to-b from-neon-cyan to-solar-orange opacity-50"></div>
+                    <div class="text-center">
+                        <div class="text-xs text-gray-400">Hackathon</div>
+                        <div class="text-sm font-bold glow-text-orange">Hack2Skill</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD -->
+    <main class="p-6">
+        <div class="dashboard-grid">
+            <!-- LEFT PANEL - CONTROL VARIABLES -->
+            <div class="card-glow neon-border overflow-y-auto">
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold glow-text mb-6 flex items-center gap-2">
+                        <span>⚙️</span> Control Variables
+                    </h2>
+
+                    <!-- City Selector -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-semibold text-gray-300 mb-3">
+                            🏙️ Target Microclimate
+                        </label>
+                        <select id="citySelector" class="w-full smooth-transition">
+                            <option value="delhi">New Delhi Microclimate</option>
+                            <option value="mumbai">Mumbai Coastal Grid</option>
+                            <option value="bangalore">Bengaluru Urban Center</option>
+                        </select>
+                    </div>
+
+                    <!-- Vegetation Cover Slider -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-sm font-semibold text-gray-300">
+                                🌿 Vegetation Cover / Canopy Density
+                            </label>
+                            <span class="text-lg font-bold glow-text" id="vegValue">0%</span>
+                        </div>
+                        <input type="range" id="vegetationSlider" min="0" max="100" value="0" class="w-full smooth-transition">
+                        <div class="text-xs text-gray-500 mt-2">Tree cover & green space impact</div>
+                    </div>
+
+                    <!-- Albedo Factor Slider -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-sm font-semibold text-gray-300">
+                                ✨ Albedo Factor / Cool Roof Coverage
+                            </label>
+                            <span class="text-lg font-bold glow-text" id="albedoValue">0%</span>
+                        </div>
+                        <input type="range" id="albedoSlider" min="0" max="100" value="0" class="w-full smooth-transition">
+                        <div class="text-xs text-gray-500 mt-2">Reflective surface mitigation</div>
+                    </div>
+
+                    <!-- Urban Built-up Density Slider -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-sm font-semibold text-gray-300">
+                                🏢 Urban Built-up Density
+                            </label>
+                            <span class="text-lg font-bold number-display-orange" id="builtupValue">0%</span>
+                        </div>
+                        <input type="range" id="builtupSlider" min="0" max="100" value="0" class="w-full smooth-transition">
+                        <div class="text-xs text-gray-500 mt-2">Concrete & asphalt concentration</div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <p class="text-xs font-semibold text-gray-400 mb-4">Quick Presets</p>
+                        <button class="w-full mb-2 py-2 px-3 rounded-lg border border-neon-cyan text-neon-cyan hover-glow smooth-transition text-sm font-semibold hover:bg-opacity-20 hover:bg-cyan-500"
+                            onclick="setPreset('cool')">
+                            🧊 Cool City Scenario
+                        </button>
+                        <button class="w-full mb-2 py-2 px-3 rounded-lg border border-solar-orange text-solar-orange hover-glow-orange smooth-transition text-sm font-semibold hover:bg-opacity-20 hover:bg-orange-500"
+                            onclick="setPreset('heat')">
+                            🔥 Heat Island Scenario
+                        </button>
+                        <button class="w-full py-2 px-3 rounded-lg border border-green-500 text-green-400 hover-glow smooth-transition text-sm font-semibold hover:bg-opacity-20 hover:bg-green-500"
+                            onclick="setPreset('balanced')">
+                            ⚖️ Balanced Scenario
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CENTER PANEL - INTERACTIVE HEATMAP -->
+            <div class="card-glow neon-border overflow-hidden flex flex-col">
+                <h2 class="text-xl font-bold glow-text mb-4 flex items-center gap-2">
+                    <span>🗺️</span> Thermal Heatmap Simulation
+                </h2>
+
+                <!-- Heatmap Container -->
+                <div class="flex-1 relative rounded-lg overflow-hidden thermal-gradient" id="heatmapContainer" style="min-height: 400px;">
+                    <!-- City Label -->
+                    <div class="absolute top-4 left-4 z-10">
+                        <div class="text-white font-bold text-lg glow-text" id="cityLabel">New Delhi Microclimate</div>
+                        <div class="text-gray-400 text-xs">Live Thermal Simulation</div>
+                    </div>
+
+                    <!-- Heatmap Grid Visualization -->
+                    <div class="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-1 p-4 opacity-70" id="heatmapGrid">
+                        <!-- Grid cells will be generated by JS -->
+                    </div>
+
+                    <!-- Thermal Indicators -->
+                    <div class="absolute bottom-4 right-4 flex flex-col gap-2 text-right">
+                        <div class="temp-indicator">
+                            <span class="text-xs">Max: <span id="maxTemp" class="font-bold">42°C</span></span>
+                        </div>
+                        <div class="temp-indicator temp-cool">
+                            <span class="text-xs">Min: <span id="minTemp" class="font-bold">28°C</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Center Information -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                        <div class="text-center">
+                            <div class="text-6xl font-bold number-display-orange mb-2" id="centerTemp">42°C</div>
+                            <div class="text-gray-300 text-sm">Zone Average Temperature</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="mt-4 p-3 bg-black bg-opacity-30 rounded-lg">
+                    <div class="flex items-center justify-between text-xs text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded" style="background: #0096ff;"></div>
+                            <span>Cool</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded" style="background: #00ff88;"></div>
+                            <span>Moderate</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded" style="background: #ffff00;"></div>
+                            <span>Warm</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded" style="background: #ff6b35;"></div>
+                            <span>Hot</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded" style="background: #ff2d55;"></div>
+                            <span>Critical</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL - AI ANALYTICS -->
+            <div class="card-glow neon-border overflow-y-auto flex flex-col">
+                <h2 class="text-xl font-bold glow-text mb-6 flex items-center gap-2">
+                    <span>🤖</span> AI Analytics
+                </h2>
+
+                <!-- LST Prediction Card -->
+                <div class="mb-6 p-4 rounded-lg border border-thermal-red bg-opacity-20 bg-red-500">
+                    <div class="text-xs font-semibold text-gray-400 mb-2">📊 Predicted Land Surface Temperature</div>
+                    <div class="number-display-orange mb-2" id="lstValue">42.0°C</div>
+                    <div class="text-xs text-gray-500 mb-3">Real-time thermal forecast</div>
+                    <div class="w-full h-2 bg-gradient-to-r from-blue-500 via-yellow-500 to-red-500 rounded-full"></div>
+                </div>
+
+                <!-- Thermal ROI Index -->
+                <div class="mb-6 p-4 rounded-lg neon-border">
+                    <div class="text-xs font-semibold text-gray-400 mb-2">🎯 Thermal ROI Index</div>
+                    <div class="number-display mb-2" id="roiValue">25</div>
+                    <div class="text-xs text-gray-500">Intervention efficiency score</div>
+                    <div class="mt-3 flex items-center justify-between text-xs text-gray-400">
+                        <span>Low Impact</span>
+                        <span id="roiStatus">Moderate</span>
+                        <span>High Impact</span>
+                    </div>
+                </div>
+
+                <!-- AC Grid Load Reduction -->
+                <div class="mb-6 p-4 rounded-lg border border-green-500 bg-opacity-20 bg-green-500">
+                    <div class="text-xs font-semibold text-gray-400 mb-2">⚡ AC Power Grid Load Reduction</div>
+                    <div class="number-display" style="color: #00ff88;" id="gridValue">12%</div>
+                    <div class="text-xs text-gray-500">Energy consumption savings</div>
+                </div>
+
+                <!-- 24-Hour Temperature Trend -->
+                <div class="mb-6 p-4 rounded-lg neon-border flex-1 flex flex-col">
+                    <div class="text-xs font-semibold text-gray-400 mb-3">📈 24-Hour Temperature Trend</div>
+                    <div class="flex-1 chart-container">
+                        <canvas id="tempTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- UV Index Alert -->
+                <div class="p-3 rounded-lg bg-opacity-20 bg-orange-500 border border-orange-500">
+                    <div class="text-xs font-bold text-orange-300">⚠️ UV Alert</div>
+                    <div class="text-xs text-gray-400 mt-1" id="uvAlert">Moderate exposure expected</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- BOTTOM TICKER & FOOTER -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-space-black via-deep-space to-space-black border-t neon-border">
+        <!-- AI Recommendation Ticker -->
+        <div class="overflow-hidden bg-opacity-50 py-3 px-6">
+            <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-neon-cyan whitespace-nowrap animate-pulse">🤖 AI RECOMMENDATION:</span>
+                <div class="flex-1 overflow-hidden">
+                    <div class="ticker-text text-sm text-gray-300" id="recommendationTicker">
+                        Analyzing thermal patterns... System initialized and ready for optimization analysis.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Credits -->
+        <div class="text-xs text-gray-500 px-6 py-2 border-t border-gray-800 flex justify-between items-center flex-wrap gap-2">
+            <div>
+                <span>© 2024 Antariksh Thermal-AI | Bharatiya Antariksh Hackathon</span>
+                <span class="mx-2">•</span>
+                <a href="https://www.isro.gov.in/" target="_blank" class="text-neon-cyan hover:underline">ISRO Data</a>
+                <span class="mx-2">•</span>
+                <a href="https://www.nasa.gov/earth/climate/" target="_blank" class="text-neon-cyan hover:underline">NASA Earth Climate</a>
+                <span class="mx-2">•</span>
+                <a href="https://www.worldbank.org/en/topic/urbandevelopment/brief/heat-smart-cities" target="_blank" class="text-neon-cyan hover:underline">World Bank Urban Heat</a>
+            </div>
+            <div class="text-gray-600">v1.0 | Live Dashboard</div>
+        </div>
+    </footer>
+
+    <!-- Chart Context Margin -->
+    <div style="height: 100px;"></div>
+
+    <script>
+        // ===== INITIALIZATION =====
+        let chart = null;
+        let sliderValues = {
+            vegetation: 0,
+            albedo: 0,
+            buildup: 0
+        };
+
+        const cityData = {
+            delhi: { name: "New Delhi Microclimate", baseTemp: 45, coords: "28.61°N, 77.23°E" },
+            mumbai: { name: "Mumbai Coastal Grid", baseTemp: 38, coords: "19.08°N, 72.88°E" },
+            bangalore: { name: "Bengaluru Urban Center", baseTemp: 32, coords: "12.97°N, 77.59°E" }
+        };
+
+        // ===== DIGITAL CLOCK =====
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getUTCHours()).padStart(2, '0');
+            const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+            document.getElementById('digitalClock').textContent = `${hours}:${minutes}:${seconds} UTC`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // ===== SLIDER EVENT LISTENERS =====
+        document.getElementById('vegetationSlider').addEventListener('input', (e) => {
+            sliderValues.vegetation = parseInt(e.target.value);
+            document.getElementById('vegValue').textContent = sliderValues.vegetation + '%';
+            updateDashboard();
+        });
+
+        document.getElementById('albedoSlider').addEventListener('input', (e) => {
+            sliderValues.albedo = parseInt(e.target.value);
+            document.getElementById('albedoValue').textContent = sliderValues.albedo + '%';
+            updateDashboard();
+        });
+
+        document.getElementById('builtupSlider').addEventListener('input', (e) => {
+            sliderValues.buildup = parseInt(e.target.value);
+            document.getElementById('builtupValue').textContent = sliderValues.buildup + '%';
+            updateDashboard();
+        });
+
+        // ===== CITY SELECTOR =====
+        document.getElementById('citySelector').addEventListener('change', (e) => {
+            updateDashboard();
+        });
+
+        // ===== CALCULATE TEMPERATURE =====
+        function calculateTemperature() {
+            const city = document.getElementById('citySelector').value;
+            const baseTemp = cityData[city].baseTemp;
+            
+            // Temperature decrease formula
+            const vegEffect = (sliderValues.vegetation / 100) * 8; // -8°C max
+            const albedoEffect = (sliderValues.albedo / 100) * 6; // -6°C max
+            const builtupFactor = (sliderValues.buildup / 100) * 12; // +12°C max
+            
+            const calculatedTemp = baseTemp - vegEffect - albedoEffect + builtupFactor;
+            return Math.round(calculatedTemp * 10) / 10;
+        }
+
+        // ===== UPDATE DASHBOARD =====
+        function updateDashboard() {
+            const city = document.getElementById('citySelector').value;
+            const cityInfo = cityData[city];
+            
+            // Update city label
+            document.getElementById('cityLabel').textContent = cityInfo.name;
+            
+            // Calculate metrics
+            const lst = calculateTemperature();
+            const roi = Math.min(100, Math.round((sliderValues.vegetation + sliderValues.albedo) / 2));
+            const gridReduction = Math.round((sliderValues.vegetation * 0.15 + sliderValues.albedo * 0.12));
+            
+            // Update displays
+            document.getElementById('lstValue').textContent = lst.toFixed(1) + '°C';
+            document.getElementById('centerTemp').textContent = lst.toFixed(1) + '°C';
+            document.getElementById('roiValue').textContent = roi;
+            document.getElementById('gridValue').textContent = gridReduction + '%';
+            
+            // Update min/max temps
+            const maxTemp = cityInfo.baseTemp + (sliderValues.buildup / 100) * 10;
+            const minTemp = cityInfo.baseTemp - 14 + (sliderValues.vegetation / 100) * 8;
+            document.getElementById('maxTemp').textContent = Math.round(maxTemp) + '°C';
+            document.getElementById('minTemp').textContent = Math.round(Math.max(minTemp, 20)) + '°C';
+            
+            // Update ROI status
+            const roiStatus = roi < 30 ? 'Low Impact' : roi < 70 ? 'Moderate Impact' : 'High Impact';
+            document.getElementById('roiStatus').textContent = roiStatus;
+            
+            // Update heatmap
+            updateHeatmap(lst);
+            
+            // Update recommendations
+            updateRecommendations(lst, roi);
+            
+            // Update chart
+            updateTempTrendChart(lst);
+            
+            // Update UV Alert
+            updateUVAlert(sliderValues.vegetation);
+        }
+
+        // ===== UPDATE HEATMAP GRID =====
+        function updateHeatmap(avgTemp) {
+            const container = document.getElementById('heatmapGrid');
+            container.innerHTML = '';
+            
+            const getColorForTemp = (temp) => {
+                if (temp < 30) return '#0096ff';
+                if (temp < 33) return '#00e5ff';
+                if (temp < 36) return '#00ff88';
+                if (temp < 39) return '#ffff00';
+                if (temp < 42) return '#ff6b35';
+                return '#ff2d55';
+            };
+            
+            for (let i = 0; i < 16; i++) {
+                const variation = (Math.random() - 0.5) * 6;
+                const cellTemp = avgTemp + variation;
+                const cell = document.createElement('div');
+                cell.className = 'rounded-lg cursor-pointer hover:scale-105 smooth-transition';
+                cell.style.backgroundColor = getColorForTemp(cellTemp);
+                cell.style.opacity = '0.8';
+                cell.title = `${Math.round(cellTemp)}°C`;
+                container.appendChild(cell);
+            }
+        }
+
+        // ===== UPDATE TEMP TREND CHART =====
+        function updateTempTrendChart(baseTemp) {
+            const ctx = document.getElementById('tempTrendChart').getContext('2d');
+            
+            const hours = [];
+            const temps = [];
+            
+            for (let h = 0; h < 24; h++) {
+                hours.push(h + ':00');
+                // Simulate realistic 24-hour temperature curve
+                const timeOfDay = (h - 6) / 12; // Peak around noon (6 = -1, 18 = +1)
+                const tempVariation = Math.sin(timeOfDay * Math.PI) * 8;
+                temps.push(Math.max(18, baseTemp + tempVariation));
+            }
+            
+            if (chart) {
+                chart.destroy();
+            }
+            
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: hours,
+                    datasets: [{
+                        label: 'Temperature (°C)',
+                        data: temps,
+                        borderColor: '#00e5ff',
+                        backgroundColor: 'rgba(0, 229, 255, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#ff6b35',
+                        pointBorderColor: '#fff',
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 15,
+                            max: 50,
+                            grid: {
+                                color: 'rgba(42, 63, 95, 0.3)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#a0aec0',
+                                font: { size: 10 }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#a0aec0',
+                                font: { size: 10 },
+                                maxRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ===== UPDATE RECOMMENDATIONS =====
+        function updateRecommendations(lst, roi) {
+            const veg = sliderValues.vegetation;
+            const albedo = sliderValues.albedo;
+            const buildup = sliderValues.buildup;
+            
+            let recommendation = '';
+            
+            if (lst > 44) {
+                recommendation = `🚨 CRITICAL: Temperature ${lst}°C exceeds safe levels. Recommend immediate deployment of 40%+ cool roofs and emergency green corridors in high buildup zones.`;
+            } else if (lst > 40) {
+                recommendation = `⚠️ WARNING: High thermal stress detected. Deploy cool roof paint on ${Math.round(100 - albedo)}% of urban surfaces. Plant 5000+ trees in Grid Zones A & B.`;
+            } else if (lst > 35) {
+                recommendation = `📊 MODERATE: Temperature ${lst}°C is manageable. Increase vegetation cover by ${Math.round(Math.max(0, 50 - veg))}%. Install reflective surfaces on ${Math.round(Math.max(0, 60 - albedo))}% of infrastructure.`;
+            } else if (veg > 60 && albedo > 50) {
+                recommendation = `✅ OPTIMAL: Zone is thermally balanced! Maintain current vegetation (${veg}%) and albedo (${albedo}%). Expected grid load reduction: ${Math.round(veg * 0.15 + albedo * 0.12)}%.`;
+            } else {
+                recommendation = `🔧 OPTIMIZING: Consider increasing tree canopy to ${Math.round(veg + 30)}% and cool roofing to ${Math.round(albedo + 25)}% for maximum thermal mitigation.`;
+            }
+            
+            document.getElementById('recommendationTicker').textContent = recommendation;
+        }
+
+        // ===== UPDATE UV ALERT =====
+        function updateUVAlert(vegCover) {
+            let uvLevel = 'Moderate';
+            let uvText = 'Moderate UV exposure expected';
+            
+            if (vegCover > 70) {
+                uvLevel = 'Low';
+                uvText = '✅ Low UV exposure - vegetation providing excellent protection';
+            } else if (vegCover < 30) {
+                uvLevel = 'High';
+                uvText = '🔴 High UV exposure - recommend personal protection measures';
+            }
+            
+            document.getElementById('uvAlert').textContent = uvText;
+        }
+
+        // ===== PRESET SCENARIOS =====
+        window.setPreset = function(preset) {
+            if (preset === 'cool') {
+                document.getElementById('vegetationSlider').value = 80;
+                document.getElementById('albedoSlider').value = 70;
+                document.getElementById('builtupSlider').value = 20;
+            } else if (preset === 'heat') {
+                document.getElementById('vegetationSlider').value = 10;
+                document.getElementById('albedoSlider').value = 15;
+                document.getElementById('builtupSlider').value = 95;
+            } else if (preset === 'balanced') {
+                document.getElementById('vegetationSlider').value = 50;
+                document.getElementById('albedoSlider').value = 40;
+                document.getElementById('builtupSlider').value = 50;
+            }
+            
+            // Trigger input events
+            document.getElementById('vegetationSlider').dispatchEvent(new Event('input'));
+            document.getElementById('albedoSlider').dispatchEvent(new Event('input'));
+            document.getElementById('builtupSlider').dispatchEvent(new Event('input'));
+        };
+
+        // ===== INITIAL LOAD =====
+        updateDashboard();
+    </script>
+</body>
+</html>
